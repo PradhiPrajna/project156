@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+
+    <script src="./components/Rotation.js"></script>
+    <script src="./components/treasure.js"></script>
+    <script src="./components/fish.js"></script>
+    <script src="./components/Game.js"></script>
+
+
+  </head>
+
+  <body>
+    <a-scene background="color:#026F90">
+
+      <a-entity id="look" look-controls camera position="0 2 20"></a-entity>
+
+      <!--Asset Management-->
+      <a-assets timeout="10000">        
+        <a-asset-item
+          id="island"
+          src="./assets/models/island/island.gltf"
+        ></a-asset-item>
+
+        <a-asset-item
+          id="scuba"
+          src="./assets/models/scuba/scuba.gltf"
+        ></a-asset-item>
+        
+      </a-assets>
+
+      <!-- island  -->
+      <a-entity
+        id="island"
+        gltf-model="#island"
+        position="0 0 0"
+        scale="0.3 0.3 0.3"
+        animation="property: position; to: 0 0 1000;easing:linear; loop: true; dur: 150000"
+        island-rotation-reader
+      >
+      </a-entity>
+      <!-- scuba -->
+      <a-entity 
+      id="scuba_model"
+      gltf-model="#scuba"
+      position="5 0 15"
+      scale="0.1 0.1 0.1"
+      rotation="0 90 -20"
+      scuba-rotation-reader
+      >
+      </a-entity>>
+
+      <a-entity id="header" position="1 -4 0">
+        <!-- Title -->
+        <a-entity
+          position="-28.5 21.5 0"
+          text="font: exo2bold; align: center; width: 40; color: black; value: SCUBA DIVING"
+        ></a-entity>
+
+        <!-- Timer -->
+        <a-entity position="-23.5 19.3 0">
+          <a-entity
+            position="-1.5 0.07 0"
+            text="font: aileronsemibold; width: 12; color: black; value: TIME\nREMAINING"
+          ></a-entity>
+          <a-entity
+            id="timer"
+            position="-9.8 0.3 0"
+            text="font: exo2bold; align: center; width: 30; color: black; value: 00:00"
+          ></a-entity>
+        </a-entity>
+        
+      </a-entity>
+
+      
+    </a-scene>
+  </body>
+</html>
